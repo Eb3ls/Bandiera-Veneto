@@ -1,0 +1,196 @@
+html {
+    font-family: "Italic", sans-serif;
+    background-color: rgb(247, 236, 236);
+    text-align: center;
+}
+
+main {
+    min-height: 95vh;
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    justify-content: center;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-button,
+.right-button {
+    border: none;
+    padding: 5px;
+    background: transparent;
+}
+
+.left-button:hover,
+.right-button:hover {
+    background-color: #c1ddf0;
+    border-radius: 20px;
+}
+
+#left,
+#right {
+    padding: 1em;
+}
+
+#right {
+    flex-grow: 3;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: none;
+    background-color: #e1eff6;
+}
+
+@media (max-width: 1250px) or (max-height: 700px) {
+
+    #main-wrapper {
+        flex-direction: column;
+    }
+
+    #left,
+    #right {
+        border-radius: 20px;
+    }
+}
+
+.month {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    color: gray;
+}
+
+.month button {
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+}
+
+.day,
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+}
+
+.day {
+    margin-top: 1em;
+    border-radius: 20px;
+    font-size: 1.25em;
+    font-variant: small-caps;
+}
+
+.date-grid {
+    justify-items: center;
+    height: 65%;
+}
+
+.date-grid button {
+    position: relative;
+    border-radius: 50%;
+    background-color: transparent;
+    width: 5ch;
+    height: 5ch;
+    border: none;
+}
+
+.date-grid button:hover,
+.date-grid button:focus {
+    outline: none;
+    cursor: pointer;
+    background-color: #c1ddf0;
+}
+
+button.previous-month {
+    color: gray;
+}
+
+.line {
+    margin-top: 10px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(102, 102, 102);
+}
+
+.current-month {
+    color: #22c267;
+    font-weight: bold;
+}
+
+.month button:not(.current-month):hover {
+    background-color: #c1ddf0;
+    border-radius: 20px;
+}
+
+#left {
+    flex-grow: 1;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-right: none;
+    background-color: #16d267;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#data {
+    font: 5em bold;
+    height: 1em;
+    margin: 0;
+    font-weight: 900;
+}
+
+#events {
+    align-self: flex-start;
+}
+
+.basso {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    gap: 15px;
+}
+
+#insert,
+#add {
+    color: white;
+    background-color: transparent;
+}
+
+#insert {
+    border: none;
+    font: 1em;
+    flex-grow: 1;
+}
+
+#insert:focus {
+    outline: none;
+}
+
+#add {
+    border-radius: 20px;
+    font: 1em bold;
+    font-weight: 900;
+    border: 3px solid white;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 0.5em;
+    flex-grow: 0;
+}
+
+#add:hover {
+    background-color: white;
+    color: #16d267;
+}
+
+#bottom-line {
+    background-color: white;
+    margin-bottom: 2em;
+}
