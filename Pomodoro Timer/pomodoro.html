@@ -10,20 +10,26 @@
 
 <body>
   <h1>Pomodoro Study Timer</h1>
+
   <div id="clock" class="blob">
+    <p>Paused</p>
     <div class="timer" id="timerDisplay">00:00</div>
+    <button id="start" type="submit">Start</button>
+    <button id="reset" type="submit">Reset</button>
   </div>
-  <button id="start" type="submit">Start</button>
+
   <form id="studyForm">
     <div id="studyTime" class="box">
       <img type="image/svg" src="Icons/double-arrow-up.svg" alt="Increase time" class="icon">
       <p>Study Time</p>
-      <input type="number" id="studyTime" name="studyTime" min="1" value="25" required>
+      <input type="number" id="studyTime" name="studyTime" min="1" value="25" step="1" required>
       <img type="image/svg" src="Icons/double-arrow-down.svg" alt="Decrease time" class="icon">
     </div>
     <div id="sessionCount" class="box">
+      <img type="image/svg" src="Icons/double-arrow-up.svg" alt="Increase sessions" class="icon">
       <p>Sessions</p>
       <input type="number" id="sessions" name="sessions" value="1" required>
+      <img type="image/svg" src="Icons/double-arrow-down.svg" alt="Decrease sessions" class="icon">
     </div>
     <div id="breakTime" class="box">
       <img type="image/svg" src="Icons/double-arrow-up.svg" alt="Increase break time" class="icon">
@@ -32,6 +38,7 @@
       <img type="image/svg" src="Icons/double-arrow-down.svg" alt="Decrease break time" class="icon">
     </div>
   </form>
+
   <script src="pomodoro.js"></script>
 
 </body>
