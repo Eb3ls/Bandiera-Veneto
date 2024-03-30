@@ -44,3 +44,63 @@
 //     }, 1000);
 // });
 
+let start = document.getElementById('start');
+let studyTime = document.getElementById('studyTime');
+let breakTime = document.getElementById('breakTime');
+let sessions = document.getElementById('sessions');
+let status = document.getElementById('status');
+let upST = document.getElementById('upST');
+let downST = document.getElementById('downST');
+let upS = document.getElementById('upS');
+let downS = document.getElementById('downS');
+let upBT = document.getElementById('upBT');
+let downBT = document.getElementById('downBT');
+let count = 0;
+
+function adjustValue(event) {
+    let button = event.target;
+    let current = button.parentElement.querySelector('input');
+    if (button.id.includes('up')) {
+        current.value = parseInt(current.value) + 1;
+    } else {
+        if(current.value === '1'){
+            return;
+        }
+        current.value = parseInt(current.value) - 1;
+    }
+}
+
+let buttons = [upST, downST, upS, downS, upBT, downBT];
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', adjustValue);
+}
+
+function breakTimer() {
+    count = count + 1;
+    if (count === breakTime) {
+        clearInterval(startBreak);
+        document.getElementById('timerDisplay').textContent = "Session Complete!";
+    }
+}
+
+function timer() {
+    count = count + 1;
+    if (count === time) {
+        clearInterval(counter);
+        var startBreak = setInterval(breakTimer, 1000);
+        status.textContent = "Break Time!";
+    }
+}
+
+function startButton() {
+    var time = studyTime.value * 60;
+    var breakTime = breakTime.value * 60;
+    var session = sessions.value;
+    var count = 0;
+    count = setInterval(timer, 1000);
+}
+
+start.addEventListener('click', startButton());
+
+

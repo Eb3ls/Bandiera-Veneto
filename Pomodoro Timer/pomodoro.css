@@ -1,4 +1,19 @@
 
+:root {
+    --lightRed: #ce133b;
+    --red: #b6042a;
+    --darkRed: #79021c;
+    --green : #00a86b;
+    --darkGreen: #007a4d;
+    --backColor: #2b2a30;
+
+    --lightFocus: #a00225;
+    --darkFocus: #79021c;
+    --text : #f0f0f0;
+    --text : var(--green);
+}
+
+
 .blob {
     width: 300px;
     /* Larghezza del div .blob */
@@ -8,7 +23,6 @@
     /* Margini: 10% sopra e sotto, centrato orizzontalmente */
     position: relative;
     /* Posizionamento relativo: utilizzato per posizionare gli pseudo-elementi ::before e ::after rispetto a questo elemento */
-    color: #fff;
     /* Colore del testo all'interno del div */
     display: flex;
     /* Display flex per centrare il contenuto (testo o altro) all'interno del div */
@@ -20,42 +34,34 @@
     /* Livello z-index, determina l'ordine di sovrapposizione degli elementi */
 }
 
-.blob::before {
+/* .blob::before {
     content: '';
-    /* Necessario per rendere visibile lo pseudo-elemento, anche se non contiene testo */
-    border: 2px solid #79021c;
-    /* Bordo dello pseudo-elemento */
+    border: 1px solid var(--darkRed);
     border-radius: 58% 42% 48% 53% / 47% 60% 36% 53%;
-    /* Raggio del bordo per creare forme organiche/irregolari */
     width: 100%;
-    /* Larghezza: occupa tutto lo spazio disponibile nel contenitore .blob */
-    height: 100%;
-    /* Altezza: occupa tutto lo spazio disponibile nel contenitore .blob */
+    height: 95%;
     position: absolute;
-    /* Posizionamento assoluto: posizionato rispetto al primo antenato posizionato (in questo caso .blob) */
     left: 0;
-    /* Allineato a sinistra del contenitore .blob */
     top: 0;
-    /* Allineato in alto del contenitore .blob */
     animation-fill-mode: forwards;
-    /* Mantiene lo stile dell'ultimo frame dell'animazione dopo che è finita */
-}
+    z-index: -1;
+} */
 
 /*https://css-tricks.com/almanac/selectors/a/after-and-before/*/
 
 .blob::after {
     content: '';
     /* Analogamente a ::before, rende visibile lo pseudo-elemento */
-    border: 2px solid #b6042a;
+    border: 3px solid black;
     /* Bordo dello pseudo-elemento */
     border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     /* Raggio del bordo per creare forme diverse rispetto a ::before */
     width: 100%;
     /* Larghezza come ::before */
-    height: 100%;
+    height: 95%;
     /* Altezza come ::before */
-    background: rgba(244, 166, 166, 0.1);
+    background: radial-gradient(circle at top right, var(--lightRed) 0%, var(--darkRed) 100%);
     /* Sfondo leggermente trasparente per differenziarlo da ::before */
     position: absolute;
     /* Posizionamento assoluto come ::before */
@@ -64,6 +70,7 @@
     top: 0;
     /* Allineato in alto come ::before */
     animation-fill-mode: forwards;
+    z-index: -1;
     /* Mantiene lo stile dell'ultimo frame dell'animazione come ::before */
 }
 
@@ -92,8 +99,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #2b2a30;
-    color: white;
+    background-color: var(--backColor);
+    color: var(--text);
 }
 
 #clock {
@@ -108,6 +115,7 @@ body {
 
 .timer {
     font-size: 4em;
+    margin-bottom: 10px;
 }
 
 #start, #reset {
@@ -115,9 +123,9 @@ body {
     width: 5em;
     background-color: transparent;
     font-size: 0.6em;
-    color: white;
     font-weight: bold;
     text-transform: uppercase;
+    color: var(--text);
 }
 
 #studyForm {
@@ -132,22 +140,22 @@ body {
 }
 
 input {
-    background-color: #be062e;
+    background-color: var(--red);
     border: none;
-    border-bottom: 4px solid #79021c;
+    border-bottom: 4px solid var(--darkRed);
     border-radius: 7px;
     text-align: center;
     outline: none;
     padding: 5px;
     width: 5em;
-    color: white;
     font-size: 1.5em;
     font-weight: bold;
+    color: var(--text);
 }
 
 input:focus {
-    background-color: #a00225;
-    border-bottom: 4px solid #79021c;
+    background-color: var(--lightFocus);
+    border-bottom: 4px solid var(--darkFocus);
     box-shadow: 0 0 10px #000000;
 }
 
@@ -165,15 +173,18 @@ input[type="number"] {
 .icon {
     height: 2em;
     width: 2em;
-    color: white;
     margin: 5px;
 }
 
-p {
+#start, #reset {
     font-size: 0.9em;
     font-weight: bold;
     text-transform: uppercase;
     margin: 1px;
+}
+
+p {
+    margin: 2px;
 }
 
 .box {
@@ -187,9 +198,16 @@ h1 {
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #b6042a;
-    border-bottom: 4px solid #79021c;
+    background-color: var(--red);
+    border-bottom: 4px solid var(--darkRed);
     border-radius: 8px;
     padding: 10px;
+}
 
+#stalk {
+    width: 50px;
+    height: 100px;
+    background: #228B22; /* Green color */
+    clip-path: polygon(50% 50%, 65% 75%, 75% 50%, 90% 80%, 70% 100%, 30% 100%, 10% 80%, 25% 50%, 35% 75%);
+    position: relative;
 }
