@@ -76,20 +76,19 @@
 
 @keyframes rotate {
     0% {
-        transform: scale(1) rotate(0deg);
-        border-color: #EC0D0D;
+        transform: rotate(0deg);
+        border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
+        background: radial-gradient(circle at top right, var(--lightRed) 0%, var(--darkRed) 100%);
     }
 
     50% {
-        transform: scale(3) rotate(360deg);
-        /* Adjust the scale value at 50% as needed */
-        border-color: #f4c01c;
+        transform: rotate(360deg);
+        border-radius: 58% 42% 58% 33% / 57% 60% 46% 33%;
     }
 
     100% {
-        transform: scale(6) rotate(360deg);
-        /* Keep rotation the same as at 50% */
-        border-color: #EC0D0D;
+        transform: rotate(360deg);
+        border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
     }
 }
 
