@@ -10,84 +10,66 @@
     --lightFocus: #a00225;
     --darkFocus: #79021c;
     --text : #f0f0f0;
-    --text : var(--green);
 }
 
 
 .blob {
     width: 300px;
-    /* Larghezza del div .blob */
     height: 300px;
-    /* Altezza del div .blob */
-    margin: 10% auto;
-    /* Margini: 10% sopra e sotto, centrato orizzontalmente */
+    margin: 5% auto;
     position: relative;
-    /* Posizionamento relativo: utilizzato per posizionare gli pseudo-elementi ::before e ::after rispetto a questo elemento */
-    /* Colore del testo all'interno del div */
     display: flex;
-    /* Display flex per centrare il contenuto (testo o altro) all'interno del div */
     justify-content: center;
-    /* Allinea orizzontalmente il contenuto al centro */
     align-items: center;
-    /* Allinea verticalmente il contenuto al centro */
     z-index: 0;
-    /* Livello z-index, determina l'ordine di sovrapposizione degli elementi */
 }
 
-/* .blob::before {
-    content: '';
-    border: 1px solid var(--darkRed);
+.blob::before, .blob::after {
     border-radius: 58% 42% 48% 53% / 47% 60% 36% 53%;
     width: 100%;
     height: 95%;
     position: absolute;
     left: 0;
     top: 0;
-    animation-fill-mode: forwards;
+    content: '';
     z-index: -1;
-} */
+}
 
-/*https://css-tricks.com/almanac/selectors/a/after-and-before/*/
+.blob::before {
+    background: var(--red);
+    border: 3px solid var(--darkRed);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+}
 
 .blob::after {
-    content: '';
-    /* Analogamente a ::before, rende visibile lo pseudo-elemento */
-    border: 3px solid black;
-    /* Bordo dello pseudo-elemento */
-    border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
+    border: 3px solid var(--darkRed);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
-    /* Raggio del bordo per creare forme diverse rispetto a ::before */
-    width: 100%;
-    /* Larghezza come ::before */
-    height: 95%;
-    /* Altezza come ::before */
-    background: radial-gradient(circle at top right, var(--lightRed) 0%, var(--darkRed) 100%);
-    /* Sfondo leggermente trasparente per differenziarlo da ::before */
-    position: absolute;
-    /* Posizionamento assoluto come ::before */
-    left: 0;
-    /* Allineato a sinistra come ::before */
-    top: 0;
-    /* Allineato in alto come ::before */
-    animation-fill-mode: forwards;
-    z-index: -1;
-    /* Mantiene lo stile dell'ultimo frame dell'animazione come ::before */
 }
 
 @keyframes rotate {
     0% {
-        transform: rotate(0deg);
-        border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
-        background: radial-gradient(circle at top right, var(--lightRed) 0%, var(--darkRed) 100%);
+        transform: rotate(0deg) scale(1);
     }
 
     50% {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes transform {
+    0% {
+        border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
+    }
+
+    50% {
         border-radius: 58% 42% 58% 33% / 57% 60% 46% 33%;
     }
 
     100% {
-        transform: rotate(360deg);
         border-radius: 48% 42% 48% 53% / 47% 60% 36% 53%;
     }
 }
@@ -209,4 +191,22 @@ h1 {
     background: #228B22; /* Green color */
     clip-path: polygon(50% 50%, 65% 75%, 75% 50%, 90% 80%, 70% 100%, 30% 100%, 10% 80%, 25% 50%, 35% 75%);
     position: relative;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fadeOut {
+    animation: fadeOut 0.25s forwards;
+}
+
+.fadeIn {
+    animation: fadeIn 0.25s forwards;
 }
