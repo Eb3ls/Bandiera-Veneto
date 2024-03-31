@@ -32,6 +32,8 @@ function resetFunction() {
     start.textContent = 'Start';
     fadeOut(reset);
     fadeIn(studyForm);
+    start.classList.remove('pauseIcon');
+    start.classList.add('playIcon');
 }
 
 function adjustValue(event) {
@@ -116,6 +118,8 @@ function pauseTimer() {
     clearInterval(Timer);
     statusText.textContent = 'Pausa';
     start.textContent = 'Continua';
+    start.classList.remove('pauseIcon');
+    start.classList.add('playIcon');
     fadeIn(reset);
     fadeIn(studyForm);
 }
@@ -126,6 +130,8 @@ function riprendi() {
     start.textContent = 'pause';
     fadeOut(reset);
     fadeOut(studyForm);
+    start.classList.remove('playIcon');
+    start.classList.add('pauseIcon');
 }
 
 
@@ -166,8 +172,10 @@ function startFunction() {
         Timer = setInterval(timer, 1000);
         start.textContent = 'pause'
         fadeOut(studyForm);
+        start.classList.remove('playIcon');
+        start.classList.add('pauseIcon');
     }
-    else if(statusText.textContent === 'Session Time!') {
+    else if((statusText.textContent === 'Session Time!') || (statusText.textContent === 'Break Time!')) {
         pauseTimer();
     }
     else if(statusText.textContent === 'Pausa') {
