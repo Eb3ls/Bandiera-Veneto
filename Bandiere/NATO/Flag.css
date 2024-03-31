@@ -1,0 +1,240 @@
+body {
+    margin: 0;
+    background-color: black;
+  }
+  
+  /*flag back color blue*/
+  #flag {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: darkblue;
+  }
+  
+  /*circle id, its a transparent circle with white border*/
+  #compass {
+    position: absolute;
+    width: calc(min(35vh, 35vw));
+    height: calc(min(35vh, 35vw));
+    border-radius: 50%;
+    border: solid white;
+    border-width: calc(min(1vh, 1vw));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .orizzontale {
+    position: absolute;
+    background-color: white;
+    --width: calc(min(20vh, 20vw));
+    --height: calc(min(1vh, 1vw));
+    width: var(--width);
+    height: var(--height);
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+  
+  #rect1 {
+    left: calc(50% - min(35vh, 35vw));
+  }
+  
+  #rect2 {
+    left: calc(50% + min(35vh, 35vw));
+  }
+  
+  .verticale {
+    position: absolute;
+    background-color: white;
+    --width: calc(min(1vh, 1vw));
+    --height: calc(min(10vh, 10vw));
+    width: var(--width);
+    height: var(--height);
+    transform: translate(-50%, -50%);
+    left: 50%;
+  }
+  
+  #rect3 {
+    top: calc(50% - 3 * var(--height));
+  }
+  
+  #rect4 {
+    top: calc(50% + 3 * var(--height));
+  }
+  
+  .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    --top: calc(min(5vh, 5vw));
+    --left: calc(min(18.5vh, 18.5vw));
+    --right: calc(min(5vh, 5vw));
+    border-top: var(--top) solid white;
+    border-left: var(--left) solid transparent;
+    border-right: var(--right) solid transparent;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform-origin: top right;
+  }
+  
+  #triangle1 {
+    transform: translate(
+      calc(-50% - var(--left) / 2 - var(--right) / 2),
+      calc(-50% + var(--top) / 2)
+    );
+  }
+  
+  #triangleOpp1 {
+    transform: scaleY(-1)
+      translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      );
+  }
+  
+  #triangle2 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(90deg);
+  }
+  
+  #triangleOpp2 {
+    transform: scaleY(-1)
+      translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(-90deg);
+  }
+  
+  #triangle3 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(180deg);
+  }
+  
+  #triangleOpp3 {
+    transform: scaleY(-1)
+      translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(-180deg);
+  }
+  
+  #triangle4 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(270deg);
+  }
+  
+  #triangleOpp4 {
+    transform: scaleY(-1)
+      translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% + var(--top) / 2)
+      )
+      rotate(-270deg);
+  }
+  
+  .backTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    --top: calc(min(12.5vh, 12.5vw));
+    --bottom: calc(min(12.5vh, 12.5vw));
+    --right: calc(min(23vh, 23vw));
+    border-top: var(--top) solid transparent;
+    border-bottom: var(--bottom) solid transparent;
+    border-right: var(--right) solid darkblue;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform-origin: right;
+  }
+  
+  #backTriangle1 {
+    transform: translate(
+      calc(-50% - var(--right) / 2),
+      calc(-50% + var(--top) / 2 - var(--bottom) / 2)
+    );
+  }
+  
+  #backTriangle2 {
+    transform: translate(
+        calc(-50% - var(--right) / 2),
+        calc(-50% + var(--top) / 2 - var(--bottom) / 2)
+      )
+      rotate(90deg);
+  }
+  
+  #backTriangle3 {
+    transform: translate(
+        calc(-50% - var(--right) / 2),
+        calc(-50% + var(--top) / 2 - var(--bottom) / 2)
+      )
+      rotate(180deg);
+  }
+  
+  #backTriangle4 {
+    transform: translate(
+        calc(-50% - var(--right) / 2),
+        calc(-50% + var(--top) / 2 - var(--bottom) / 2)
+      )
+      rotate(270deg);
+  }
+  
+  .smallTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    --bottom: calc(min(4.5vh, 4.5vw));
+    --left: calc(min(19.5vh, 19.5vw));
+    --right: calc(min(4.5vh, 4.5vw));
+    border-bottom: var(--bottom) solid darkblue;
+    border-left: var(--left) solid transparent;
+    border-right: var(--right) solid transparent;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform-origin: bottom right;
+  }
+  
+  #smallTriangle1 {
+    transform: translate(
+      calc(-50% - var(--left) / 2 - var(--right) / 2),
+      calc(-50% - var(--bottom) / 2)
+    );
+  }
+  
+  #smallTriangle2 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% - var(--bottom) / 2)
+      )
+      rotate(90deg);
+  }
+  
+  #smallTriangle3 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% - var(--bottom) / 2)
+      )
+      rotate(180deg);
+  }
+  
+  #smallTriangle4 {
+    transform: translate(
+        calc(-50% - var(--left) / 2 - var(--right) / 2),
+        calc(-50% - var(--bottom) / 2)
+      )
+      rotate(270deg);
+  }
+  
