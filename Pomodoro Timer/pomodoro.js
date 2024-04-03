@@ -18,10 +18,12 @@ const standartST = 25;
 const standartS = 1;
 const standartBT = 5;
 const maxTime = 120;
+const tick = 50;
 
 let studyTime = 0;
 let breakTime = 0;
 let session = 0;
+let prevStatus = '';
 let timeLeft;
 let Timer;
 
@@ -76,11 +78,8 @@ document.querySelectorAll('input[type="number"]').forEach(function(input) {
                 e.target.value = standartBT;
             }
         } 
-        else if (e.target.value < 1 && e.target.id !== 'sessions') {
+        else if (e.target.value < 1) {
             e.target.value = 1;
-        }
-        else if(e.target.value < 0 && e.target.id === 'sessions') {
-            e.target.value = 0;
         }
         else if (e.target.value > maxTime && e.target.id !== 'sessions') {
             e.target.value = maxTime;
@@ -116,6 +115,7 @@ function updateTime() {
 
 function pauseTimer() {
     clearInterval(Timer);
+    prevStatus = statusText.textContent;
     statusText.textContent = 'Pausa';
     start.textContent = 'Continua';
     start.classList.remove('pauseIcon');
@@ -125,8 +125,13 @@ function pauseTimer() {
 }
 
 function riprendi() {
-    statusText.textContent = 'Session Time!';
-    Timer = setInterval(timer, 1000);
+    statusText.textContent = prevStatus;
+    if(prevStatus === 'Session Time!') {
+        Timer = setInterval(timer, tick);
+    }
+    else {
+        Timer = setInterval(breakTimer, tick);
+    }
     start.textContent = 'pause';
     fadeOut(reset);
     fadeOut(studyForm);
@@ -141,15 +146,16 @@ function breakTimer() {
         clearInterval(Timer);
         timeLeft = studyTime;
         statusText.textContent = "Session Time!";
-        Timer = setInterval(timer, 1000);
+        Timer = setInterval(timer, tick);
     }
 }
 
 function timer() {
     updateTime();
-    if (timeLeft <= 0) {
+    if (timeLeft === 0) {
+        console.log('timeLeft', timeLeft);
         clearInterval(Timer);
-        if(session === 0) {
+        if(session === 1) {
             resetFunction();
             return;
         }
@@ -157,7 +163,7 @@ function timer() {
             timeLeft = breakTime;
             session = session - 1;
             statusText.textContent = "Break Time!";
-            Timer = setInterval(breakTimer, 1000);
+            Timer = setInterval(breakTimer, tick);
         }
     }
 }
@@ -169,7 +175,7 @@ function startFunction() {
         session = parseInt(S.value, 10);
         statusText.textContent = "Session Time!";
         timeLeft = studyTime;
-        Timer = setInterval(timer, 1000);
+        Timer = setInterval(timer, tick);
         start.textContent = 'pause'
         fadeOut(studyForm);
         start.classList.remove('playIcon');
@@ -186,7 +192,6 @@ function startFunction() {
 start.addEventListener('click', startFunction);
 reset.addEventListener('click', resetFunction);
 
-timerDisplay.textContent = `${String(standartST).padStart(2, '0')}:00`;
-console.log('standartST', standartST)
+timerDisplay.textContent = `${String(ST.value).padStart(2, '0')}:00`;
 console.log('timerDisplay.textContent', timerDisplay.textContent)
 reset.classList.add('fadeOut')
