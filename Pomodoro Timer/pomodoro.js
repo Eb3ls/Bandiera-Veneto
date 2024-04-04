@@ -18,7 +18,7 @@ const standartST = 25;
 const standartS = 1;
 const standartBT = 5;
 const maxTime = 120;
-const tick = 50;
+const tick = 1000;
 
 let studyTime = 0;
 let breakTime = 0;
@@ -48,7 +48,7 @@ function adjustValue(event) {
         }
         current.value = parseInt(current.value) + 1;
     } else {
-        if((current.value === '1' && current.id !== 'sessions') || (current.value === '0' && current.id === 'sessions')){
+        if(current.value === '1'){
             return;
         }
         current.value = parseInt(current.value) - 1;
