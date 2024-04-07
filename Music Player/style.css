@@ -84,12 +84,28 @@ input[type="range"]::-moz-range-thumb {
     pointer-events: none;
 }
 
-.max-height {
+main {
     height: 100vh;
+    width: 100vw;
+}
+
+.container-fluid, .row, .col {
+    height: 100%;
 }
 
 .card {
-    max-width: 70vh;
+    min-height: fit-content;
+}
+
+.card-img-top {
+    max-height: min(50vh, 50vw);
+    max-width: min(50vh, 50vw);
+    margin: auto;
+}
+
+.card-body {
+    width: 100%;
+    height: 100%;
 }
 
 .background-image {
