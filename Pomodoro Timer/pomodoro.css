@@ -1,3 +1,4 @@
+@import url(https://www.dafont.com/ds-digital.charmap?f=2);
 
 * {
     text-align: center;
@@ -223,6 +224,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Nasconde le frecce su Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .icon {
