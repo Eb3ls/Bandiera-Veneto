@@ -32,14 +32,14 @@ input[type=range]::-moz-range-progress {
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    /* Override default look */
+    
     appearance: none;
     margin-top: -12px;
     /* Centers thumb on the track */
     background-color: var(--progress-color);
     height: var(--thumb-size);
     width: var(--thumb-size);
-}
+} 
 
 input[type="range"]::-moz-range-thumb {
     border: none;
@@ -105,4 +105,19 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.volume-control-container {
+    right: 10px;
+}
+
+.volume-slider {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+.volume-control-container:hover .volume-slider {
+    width: 50%;
+    opacity: 1;
 }

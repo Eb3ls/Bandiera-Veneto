@@ -17,20 +17,28 @@
             <div class="row flex-nowrap justify-content-center overflow-hidden g-4">
                 <div class="col d-flex align-items-center justify-content-center">
                     <div class="card border-black bg-custom2 text-light">
-                        <img src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
+                        <img id="prevTrackImg" src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
                         <div class="card-body">
-                            <h5 class="card-title">Title</h5>
-                            <h6 class="card-subtitle">Subtitle</h6>
+                            <h5 id="prevTrackTitle" class="card-title">Title</h5>
+                            <h6 id="prevTrackArtist" class="card-subtitle">Subtitle</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col col-10 d-flex align-items-center justify-content-center">
                     <div class="card border-black bg-custom2 text-light">
-                        <img src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
+                        <img id="trackImg" src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
                         <div class="card-body">
-                            <h5 class="card-title">Title</h5>
-                            <h6 class="card-subtitle">Subtitle</h6>
-                            <audio id="musicPlayer" src="Music File/Bohemian-Rapsody.mp3" hidden></audio>
+                            <h5 id="trackTitle" class="card-title">Title</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 id="trackArtist" class="card-subtitle">Subtitle</h6>
+                                <div class="d-flex align-items-center justify-content-end volume-control-container position-absolute">
+                                    <i class="bi bi-volume-down-fill"></i>
+                                    <input type="range" id="volumeControl" class="form-range volume-slider reverse" min="0" max="1"
+                                        step="0.02" value="1">
+                                    <i class="bi bi-volume-up-fill"></i>
+                                </div>
+                            </div>
+                            <audio preload="auto" src="Music File/Bohemian-Rapsody.mp3" id="musicPlayer" hidden></audio>
                             <div class="progress mt-4 bg-transparent" role="progressbar" aria-label="Music progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <input class="progress-bar" type="range" id="progressSlider" class="form-range" min="0"
@@ -50,10 +58,10 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
                     <div class="card border-black bg-custom2 text-light">
-                        <img src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
+                        <img id="nextTrackImg" src="Icons/Bohemian.jpg" class="card-img-top p-2" alt="Song image">
                         <div class="card-body">
-                            <h5 class="card-title">Title</h5>
-                            <h6 class="card-subtitle">Subtitle</h6>
+                            <h5 id="nextTrackTitle" class="card-title">Title</h5>
+                            <h6 id="nextTrackArtist" class="card-subtitle">Subtitle</h6>
                         </div>
                     </div>
                 </div>
