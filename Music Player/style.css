@@ -12,12 +12,6 @@ input[type="range"] {
     cursor: pointer;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
-    background: var(--bar-color);
-    height: var(--bar-height);
-    border-radius: var(--bar-height);
-}
-
 input[type="range"]::-moz-range-track {
     background: var(--bar-color);
     height: var(--bar-height);
@@ -30,17 +24,6 @@ input[type=range]::-moz-range-progress {
     border-radius: var(--bar-height);
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    
-    appearance: none;
-    margin-top: -12px;
-    /* Centers thumb on the track */
-    background-color: var(--progress-color);
-    height: var(--thumb-size);
-    width: var(--thumb-size);
-} 
-
 input[type="range"]::-moz-range-thumb {
     border: none;
     /*Removes extra border that FF applies*/
@@ -49,6 +32,23 @@ input[type="range"]::-moz-range-thumb {
     background-color: var(--progress-color);
     height: var(--thumb-size);
     width: var(--thumb-size);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: var(--bar-height);
+    background: var(--bar-color);
+    border-radius: var(--bar-height);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--progress-color);
+    border-radius: 50%;
+    margin-top: calc((var(--bar-height) - var(--thumb-size)) / 2);
 }
 
 .icon-xxl {

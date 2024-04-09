@@ -131,6 +131,10 @@ audioTag.addEventListener("durationchange", function() {
     totalDurationTag.innerHTML = String(Math.floor(audioTag.duration / 60)).padStart(2, '0') + ":" + String(Math.floor(audioTag.duration % 60)).padStart(2, '0');
 });
 
+audioTag.addEventListener("ended", function() {
+    nextButtonTag.click();
+    
+});
 nextButtonTag.addEventListener("click", function() {
     if (trackID < trackSet.length - 1) {
         trackID++;
