@@ -65,8 +65,8 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 document.querySelectorAll('input[type="number"]').forEach(function(input) {
-    resetFunction();
     input.addEventListener('change', function(e) {
+        resetFunction();
         if (isNaN(e.target.value) || e.target.value === '') {
             if(e.target.id === 'studyTime') {
                 e.target.value = standartST;

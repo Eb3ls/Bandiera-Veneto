@@ -8,19 +8,19 @@ trackSet = [
         title: "Bohemian Rapsody", 
         artist: "Queen", 
         src: "Music File/Bohemian-Rapsody.mp3",
-        img: "Icons/Bohemian.jpg"
+        img: "Icons/Bohemian-Rapsody.jpg"
     }, 
     {
         title: "Billie Jean", 
-        artist: "Michael Jackson", 
+        artist: "Michael Jackson",
         src: "Music File/Billie-Jean.mp3",
-        img: "Icons/Billie-jean.jpg"
+        img: "Icons/Billie-Jean.jpg"
     }, 
     {
         title: "Girls Just Wanna Have Fun", 
         artist: "Cyndi Lauper", 
         src: "Music File/Girls-just-wanna-have-fun.mp3",
-        img: "Icons/Girls.jpg"
+        img: "Icons/Girls-just-wanna-have-fun.jpg"
     }
 ];
 
