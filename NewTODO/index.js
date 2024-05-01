@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require('path');
 //const _ = require("lodash");
-const cors = require('cors')
+const cors = require('cors');
 app.use(cors());
 // Set the view engine to EJS
 app.set("view engine", "ejs");
@@ -20,20 +20,21 @@ const mongoDBUri = "mongodb+srv://panecondito10:jQpyqMmPfDOwxUhj@cluster0.l0sw5h
 mongoose.connect(mongoDBUri);
 
 const entrySchema = new mongoose.Schema({
-    _id: Date,
+    _id: Number,
     data: String,
     completed: Boolean
 });
 
 const Entry = mongoose.model("entry", entrySchema);
 
-app.get('/', function(req, res) {
-    res.render('pages/home');
+app.get('/', async function(req, res) {
+    const entries = await Entry.find({});
+    res.render('pages/home', { entries: entries });
 });
 
 app.post('/add', async function(req, res) {
     const newEntry = new Entry({
-        _id: Date.now(),
+        _id: parseInt(Date.now()),
         data: req.body.data,
         completed: false
     });
@@ -50,6 +51,13 @@ app.post('/delete', async function(req, res) {
     }
     res.redirect('/');
 }); 
+
+app.post('/complete', async function(req, res) {
+    let id = parseInt(req.body.id);
+    let completed = req.body.completed === "true" ? "false" : "true";
+    await Entry.findOneAndUpdate({ _id: id }, { completed: completed });
+    res.redirect('/');
+});
 
 
 
