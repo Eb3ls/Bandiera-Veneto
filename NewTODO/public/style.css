@@ -1,4 +1,26 @@
-body {
-    background-color: #000000;
-    /* Colore temporaneo solo per includere il file*/
+h2 {
+    color: red;
+    top: 1rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icon {
+    margin: 0.5rem;
+    background: none;
+    border: none;
 }
