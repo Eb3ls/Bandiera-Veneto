@@ -1,13 +1,17 @@
 <div>
-    <p><%=entry.data %></p>
-    <form action="/complete" method="post">
-        <input type="hidden" name="id" value="<%=entry._id %>" />
-        <% if(entry.completed) { %>
-            <button type="submit" name="completed" value="<%=entry.completed %>">Completed</button>
-        <% }else{ %><button type="submit" name="completed" value="<%=entry.completed %>">Uncompleted</button> <%} %>
-    </form>
-    <form action="/delete" method="post">
-        <input type="hidden" name="id" value="<%=entry._id %>">
-        <button type="submit">Delete</button>
-    </form>
+	<p>
+		<%=entry.data %>
+	</p>
+	<form action="/complete" method="post">
+		<input type="hidden" name="id" value="<%=entry._id %>" />
+		<% if(entry.completed) { %>
+			<button type="submit" name="completed" value="<%=entry.completed %>">Completed</button>
+		<% }else{ %>
+			<button type="submit" name="completed" value="<%=entry.completed %>">Uncompleted</button>
+		<%} %>
+	</form>
+	<form action="/delete" method="post">
+		<input type="hidden" name="id" value="<%=entry._id %>">
+		<button type="submit">Delete</button>
+	</form>
 </div>
