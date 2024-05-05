@@ -11,15 +11,15 @@
 <body>
 	
 	<header>
-		<%- include('../partials/header'); %>
+		<%- include('../partials/headerEntry', {title: listItem.data}); %>
 	</header>
 
-	<%- include('../partials/addListItem'); %>
+	<%- include('../partials/addEntry', {id: listItem._id}); %>
 
-	<%- include('../partials/deleteAll'); %>
+	<%- include('../partials/deleteAllEntries', {id: listItem._id}); %>
 
-	<% listItems.forEach(listItem => { %>
-		<%- include('../partials/listItem', {listItem: listItem}); %>
+	<% entries.forEach(entry => { %>
+		<%- include('../partials/entry', {entry: entry, id: listItem._id}); %>
 	<% }); %>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
