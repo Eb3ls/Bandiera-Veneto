@@ -1,0 +1,302 @@
+@import url(https://www.dafont.com/ds-digital.charmap?f=2);
+
+* {
+    text-align: center;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    min-width: auto;
+    min-height: auto;
+}
+
+:root {
+    --lightRed: #ce133b;
+    --red: #b6042a;
+    --darkRed: #79021c;
+    --green : #00a86b;
+    --darkGreen: #007a4d;
+    --backColor: #2b2a30;
+
+    --lightFocus: #a00225;
+    --darkFocus: #79021c;
+    --text : #f0f0f0;
+}
+
+
+.blob {
+    position: relative;
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: transform1 10s infinite alternate;
+}
+
+.blob::before, .blob::after {
+    content: '';
+    position: absolute;
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    z-index: -1;
+}
+
+.blob::before {
+    top: 12%;
+    right: 7%;
+    bottom: 10%;
+    left: 15%;
+    animation: transform2 10s infinite alternate;
+}
+
+.blob::after {
+    top: 20%;
+    right: 20%;
+    bottom: 25%;
+    left: 20%;
+    animation: transform3 10s infinite alternate;
+}
+
+.blob {
+    background: rgba(165, 41, 41, 0.5);
+    border-radius: 100%;
+}
+
+.blob::before {
+    background: rgba(94, 13, 13, 0.5);
+    border-radius: 100%;
+}
+
+.blob::after{
+    background: rgba(170, 30, 30, 0.5);
+    border-radius: 100%;
+}
+
+@keyframes transform1 {
+    0%, 100% {
+        border-radius: 48% 66% 48% 53% / 47% 60% 36% 53%;
+    }
+
+    50% {
+        border-radius: 58% 42% 58% 33% / 57% 60% 46% 33%;
+    }
+}
+
+@keyframes transform2 {
+    0%, 100% {
+        border-radius: 23% 53% 42% 48% / 36% 53% 60% 47%;
+    }
+
+    50% {
+        border-radius: 58% 33% 42% 58% / 46% 33% 60% 57%;
+    }
+}
+
+@keyframes transform3 {
+    0%, 100% {
+        border-radius: 42% 48% 53% 48% / 60% 47% 36% 53%;
+    }
+
+    50% {
+        border-radius: 42% 58% 33% 58% / 60% 27% 46% 33%;
+    }
+}
+
+@keyframes transform4 {
+    0%, 100% {
+        border-radius: 53% 48% 48% 42% / 36% 53% 47% 60%;
+    }
+
+    50% {
+        border-radius: 33% 58% 58% 42% / 46% 33% 57% 60%;
+    }
+}
+
+.insertBox {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 30px;
+    margin: 0;
+    gap: 20px;
+    background-color: var(--backColor);
+    color: var(--text);
+}
+
+#clock {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    z-index: 1;
+    background-color: var(--backColor);
+    border-radius: 100%;
+    animation: transform4 10s infinite alternate;
+}
+
+#start, #reset {
+    border: 0;
+    background-color: transparent;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 1px;
+}
+
+#start.playIcon::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    background: url('Icons/play.svg');
+    background-size: contain;
+    width: 0.7em;
+    height: 0.7em;
+    margin-right: 5px;
+}
+
+#start.pauseIcon::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    background: url('Icons/pause.svg');
+    background-size: contain;
+    width: 0.7em;
+    height: 0.7em;
+    margin-right: 5px;
+}
+
+#reset::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    background: url('Icons/reset.svg');
+    background-size: contain;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 5px;
+}
+
+#studyForm {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-top: auto;
+    margin-bottom: 2em;
+}
+
+#timerDisplay {
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: var(--red);
+    border: none;
+    border-bottom: 4px solid var(--darkRed);
+    border-radius: 7px;
+    outline: none;
+    padding: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text);
+    width: 100%;
+}
+
+input:focus {
+    background-color: var(--lightFocus);
+    border-bottom: 4px solid var(--darkFocus);
+    box-shadow: 0 0 10px #000000;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Nasconde le frecce su Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.icon {
+    height: 2em;
+    width: 2em;
+    margin: 5px;
+}
+
+p {
+    margin: 2px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: inbold;
+    text-transform: uppercase;
+    background-color: var(--red);
+    border-bottom: 4px solid var(--darkRed);
+    border-radius: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fadeOut {
+    animation: fadeOut 0.25s forwards;
+    display: none;
+}
+
+.fadeIn {
+    animation: fadeIn 0.25s forwards;
+    display: flex;
+}
+
+.fadeOut * {
+    display: none;
+}
+
+.fadeIn * {
+    display: flex;
+}
+
+@media ((max-width: 600px) or (max-height: 700px)){
+    #studyForm {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .box {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .icon { 
+        height: 2em;
+        width: 2em;
+        margin: 5px;
+        margin-top: 25px;
+    }
+}

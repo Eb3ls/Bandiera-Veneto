@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Study Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Pomodoro Study Timer</h1>
+  <div id="blob" class="blob">
+    <div id="clock">
+      <div id="status">Ready?</div>
+      <div class="timer" id="timerDisplay"></div>
+      <button id="start" class="playIcon" type="submit">Start</button>
+      <button id="reset" type="submit">Reset</button>
+    </div>
+  </div>
+
+  <form id="studyForm">
+    <div class="box">
+      <img id="upST" src="Icons/double-arrow-up.svg" alt="Increase time" class="icon">
+      <div class="insertBox">
+        <p>Study Time</p>
+        <input type="number" id="studyTime" name="studyTime" value="25" step="1" required>
+      </div>
+      <img id="downST" src="Icons/double-arrow-down.svg" alt="Decrease time" class="icon">
+    </div>
+    <div class="box">
+      <img id="upS" src="Icons/double-arrow-up.svg" alt="Increase sessions" class="icon">
+      <div class="insertBox">
+        <p>Sessions</p>
+        <input type="number" id="sessions" name="sessions" value="1" required>
+      </div>
+      <img id="downS" src="Icons/double-arrow-down.svg" alt="Decrease sessions" class="icon">
+    </div>
+    <div class="box">
+      <img id="upBT" src="Icons/double-arrow-up.svg" alt="Increase break time" class="icon">
+      <div class="insertBox">  
+        <p>Break Time</p>
+        <input type="number" id="breakTime" name="breakTime" value="5" required>
+      </div>
+      <img id="downBT" src="Icons/double-arrow-down.svg" alt="Decrease break time" class="icon">
+    </div>
+  </form>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
