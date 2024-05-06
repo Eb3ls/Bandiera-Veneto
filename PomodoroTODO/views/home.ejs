@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pomodoro Study Timer</title>
   <link rel="stylesheet" href="../style.css">
+  <script>
+    let timeElapsed = <%= timerData.timeElapsed %>;
+    let timeStop = <%= timerData.timeStopped %>;
+  </script>
 </head>
 
 <body>
@@ -24,7 +28,7 @@
       <img id="upST" src="../Icons/double-arrow-up.svg" alt="Increase time" class="icon">
       <div class="insertBox">
         <p>Study Time</p>
-        <input type="number" id="studyTime" name="studyTime" value="25" step="1" required>
+        <input type="number" id="studyTime" name="studyTime" value="<%= timerData.studyTime %>" step="1" required>
       </div>
       <img id="downST" src="../Icons/double-arrow-down.svg" alt="Decrease time" class="icon">
     </div>
@@ -32,7 +36,7 @@
       <img id="upS" src="../Icons/double-arrow-up.svg" alt="Increase sessions" class="icon">
       <div class="insertBox">
         <p>Sessions</p>
-        <input type="number" id="sessions" name="sessions" value="1" required>
+        <input type="number" id="sessions" name="sessions" value="<%= timerData.sessions %>" required>
       </div>
       <img id="downS" src="../Icons/double-arrow-down.svg" alt="Decrease sessions" class="icon">
     </div>
@@ -40,7 +44,7 @@
       <img id="upBT" src="../Icons/double-arrow-up.svg" alt="Increase break time" class="icon">
       <div class="insertBox">  
         <p>Break Time</p>
-        <input type="number" id="breakTime" name="breakTime" value="5" required>
+        <input type="number" id="breakTime" name="breakTime" value="<%= timerData.breakTime %>" required>
       </div>
       <img id="downBT" src="../Icons/double-arrow-down.svg" alt="Decrease break time" class="icon">
     </div>

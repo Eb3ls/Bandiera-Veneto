@@ -1,16 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const {MongoClient, ObjectId} = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const crypto = require('crypto');
-const session = require('express-session');
 
 const app = express();
 app.use(cors());
 
 app.set('view engine', 'ejs');
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,54 +19,72 @@ client.connect();
 
 const collection = client.db().collection("users");
 
-app.get('/', async function(req, res){
+app.get('/', async function (req, res) {
     //IF SESSION ON REDIRECT TO HOME/USERNAME ELSE REDIRECT TO LOGIN
-    res.render('login', {error: ""});  
+    res.redirect('/login');
 })
 
-app.get('/signup', async function(req, res){
-    res.render('signup', {error: ""});  
+app.get('/register', async function (req, res) {
+    res.render('register', { error: "" });
 })
 
-app.post('/register', async function(req, res){
+app.get('/login', async function (req, res) {
+    res.render('login', { error: "" });
+})
+
+app.post('/adduser', async function (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     //CREATE USER IN DATABASE IF IT DOESN'T EXIST
 
     //CHECK IF USER EXISTS
-    const user =  await collection.findOne({username});
-    if(user){
-        res.render('signup', {error: "User already exists"})
+    const user = await collection.findOne({ username: username });
+    if (user) {
+        res.render('register', { error: "User already exists" })
+        return;
     }
     let newUser = {
         username: username,
-        password: crypto.createHash('md5').update(password).digest('hex')
+        password: crypto.createHash('md5').update(password).digest('hex'),
+        timerData: {
+            studyTime: 5,
+            sessions: 1,
+            breakTime: 5,
+            timeElapsed: 0,
+            timeStopped: 0
+        }
     };
     await collection.insertOne(newUser);
-    res.redirect('/login', {error: ""});
+    res.render('home', { timerData: newUser.timerData });
 })
 
-app.post('/login', async function(req, res){
+app.post('/pomodoro', async function (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     //GET USER FROM DATABASE AND CHECK IF PASSWORD MATCHES OR IF USER EXISTS
-    const user = await collection.findOne({username});
-    if(!user){
-        res.render('login', {error: "User doesn't exist"})
+    const user = await collection.findOne({ username: username });
+
+    if (!user) {
+        res.render('login', { error: "User doesn't exist" })
+        return;
     }
-    if(user.password !== crypto.createHash('md5').update(password).digest('hex')){
-        res.render('login', {error: "Incorrect password"})
+
+    if (user.password !== crypto.createHash('md5').update(password).digest('hex')) {
+        res.render('login', { error: "Incorrect password" })
+        return;
     }
-    res.redirect('/home/' + user.username);
+
+    res.render('home', { timerData: user.timerData });
 })
 
-app.get('/home/:username', async function(req, res){
-    const username = req.params.username;
-    const user = await collection.findOne({username});
-    //CHECK IF USER LOGGED IN USING SESSION
-    res.render('home');
+// app.get('/home/:username', async function (req, res) {
+//     const username = req.params.username;
+//     const user = await collection.findOne({ username });
+//     //CHECK IF USER LOGGED IN USING SESSION
+//     res.render('home');
 
-})
+// })
+
 
 
 app.listen(8080);
