@@ -16,7 +16,7 @@
         <div class="col-2 d-flex align-items-center justify-content-center flex-column bg-light rounded">
             <div class="card-body">
                 <h1 class="card-title text-center mb-4">Log in</h1>
-                <form action="/register" method="post" class="d-flex flex-column card-text">
+                <form action="/login" method="post" class="d-flex flex-column card-text">
                     <label for="username" class="mt-4">Username:</label>
                     <input type="text" id="username" required minlength="1" name="username"
                         class="rounded border-2 border-secondary">
@@ -25,6 +25,7 @@
                         class="rounded border-2 border-secondary">
                     <input type="submit" value="Log in" class="bg-primary rounded border-0 text-white mt-4">
                 </form>
+                <p><%=error%></p>
                 <a href="/signup" class="btn text-center d-block">Sign Up</a>
             </div>
         </div>
